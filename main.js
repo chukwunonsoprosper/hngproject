@@ -6,7 +6,7 @@ function build() {
     try {
       let res = await fetch(url);
       let result = await res.text();
-      document.getElementById('load').innerHTML = 'loading'
+      document.getElementById('load').innerHTML = 'load'
       document.write(result);
     } catch (error) {
       console.log(error);
@@ -16,61 +16,35 @@ function build() {
   fetchInfo();
 }
 
-function pastlocation() {
-  async function getIp() {
-    let url = "https://ipinfo.io/json";
+async function load() {
+    let url =  'https://ipinfo.io/json';
     try {
-      let response = await fetch(url);
-      let result = await response.text();
-      let parse = JSON.parse(result);
-      let ip = parse["ip"];
+        let req = await fetch(url);
+        let res = await req.json()
+        let ip = res['ip'];
+        let country = res.country;
 
-      let query = ip;
-      async function country() {
-        const url = "https://community-neutrino-ip-info.p.rapidapi.com/ip-info";
-        const options = {
-          method: "POST",
-          headers: {
-            "content-type": "application/x-www-form-urlencoded",
-            "X-RapidAPI-Key":
-              "4273ea270amshe9b959a46322d44p1945b1jsn885a1014a2eb",
-            "X-RapidAPI-Host": "community-neutrino-ip-info.p.rapidapi.com",
-          },
-          body: new URLSearchParams({
-            ip: query,
-            "reverse-lookup": "checked",
-          }),
-        };
 
-        try {
-          const response = await fetch(url, options);
-          const result = await response.text();
-          let pas = JSON.parse(result);
-          let countrydata = pas.country
-                async function sendback() {
-        let url = `https://corsproxy.io/?https://alchemistschnews.000webhostapp.com/trainapi.php?ip=${ip}&country=${countrydata}`;
+        console.log(ip + ' ' + country)
 
-        try {
-          let senddata = await fetch(url);
-          let go = await senddata.text();
-          console.log(go);
-        } catch (error) {
-          console.log(error);
+        //sendtobackend
+
+        async function sendover() {
+            let url1 =  `https://corsproxy.io/?https://alchemistschnews.000webhostapp.com/trainapi.php?ip=${ip}&country=${country}`;
+            try {
+                let send = await fetch(url1);
+                let okay = await send.text();
+                console.log(okay);
+
+            } catch (error) {
+                console.log(error)
+            }
         }
-      }
 
-      sendback();
-        } catch (error) {
-          console.log(error);
-        }
-      }
-
-      country()
+        sendover()
     } catch (error) {
-      console.log(error);
+        console.log(error)
     }
-  }
-  getIp();
 }
 
-pastlocation();
+load()
