@@ -1,7 +1,7 @@
 function build() {
   async function fetchInfo() {
     let username = document.querySelector("input").value;
-    let url = `http://localhost/hng/api?visitor_name=${username}`;
+    let url = `https://corsproxy.io/?https://alchemistschnews.000webhostapp.com/?visitor_name=${username}`;
 
     try {
       let res = await fetch(url);
@@ -48,7 +48,7 @@ function pastlocation() {
           let pas = JSON.parse(result);
           let countrydata = pas.country
                 async function sendback() {
-        let url = `http://localhost/hng/api/trainapi.php?ip=${ip}&country=${countrydata}`;
+        let url = `https://corsproxy.io/?https://alchemistschnews.000webhostapp.com/trainapi.php?ip=${ip}&country=${countrydata}`;
 
         try {
           let senddata = await fetch(url);
