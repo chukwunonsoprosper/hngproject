@@ -22,7 +22,7 @@ async function load() {
         let req = await fetch(url);
         let res = await req.json()
         let ip = res['ip'];
-        let country = res.country;
+        let country = res.city;
 
 
         console.log(ip + ' ' + country)
