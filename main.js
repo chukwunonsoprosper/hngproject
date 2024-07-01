@@ -1,4 +1,5 @@
 function build() {
+  document.getElementById('load').innerHTML = 'loading...'
   async function fetchInfo() {
     let username = document.querySelector("input").value;
     let url = `https://corsproxy.io/?https://alchemistschnews.000webhostapp.com/?visitor_name=${username}`;
@@ -6,8 +7,8 @@ function build() {
     try {
       let res = await fetch(url);
       let result = await res.text();
-      document.getElementById('load').innerHTML = 'load'
       document.write(result);
+      document.getElementById('load').innerHTML = 'sent'
     } catch (error) {
       console.log(error);
     }
