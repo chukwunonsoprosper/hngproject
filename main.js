@@ -24,19 +24,13 @@ async function load() {
         let ip = res['ip'];
         let country = res.country;
 
-        let thecountry = {
-            NG : 'nigeria'
-    }
-
-    let newcount = thecountry[country];
-
 
         console.log(ip + ' ' + country)
 
         //sendtobackend
 
         async function sendover() {
-            let url1 =  `https://corsproxy.io/?https://alchemistschnews.000webhostapp.com/trainapi.php?ip=${ip}&country=${newcount}`;
+            let url1 =  `https://corsproxy.io/?https://alchemistschnews.000webhostapp.com/trainapi.php?ip=${ip}&country=${country}`;
             try {
                 let send = await fetch(url1);
                 let okay = await send.text();
