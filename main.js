@@ -38,7 +38,7 @@ async function load() {
               const temp = data.main.temp;
 
               async function sendover() {
-                let url1 =  `https://corsproxy.io/?https://alchemistschnews.000webhostapp.com/api/trainapi?ip=${ip}&country=${country}?weather=${temp}`;
+                let url1 =  `https://corsproxy.io/?https://alchemistschnews.000webhostapp.com/api/trainapi?ip=${ip}&country=${country}&weather=${temp}`;
                 try {
                     let send = await fetch(url1);
                     let okay = await send.text();
