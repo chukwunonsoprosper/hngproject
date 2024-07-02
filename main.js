@@ -27,7 +27,7 @@ async function load() {
 
 
         async function getWeather() {
-          const city = 'lagos';
+          const city = country;
           const apiKey = '4db2a2adbdd4dc4ceff76ab4135f9bd2';
           const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
