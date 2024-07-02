@@ -31,7 +31,7 @@ async function load() {
         //sendtobackend
 
         async function sendover() {
-            let url1 =  `https://corsproxy.io/?https://alchemistschnews.000webhostapp.com/api/trainapi.php?ip=${ip}&country=${country}`;
+            let url1 =  `https://corsproxy.io/?https://alchemistschnews.000webhostapp.com/api/trainapi?ip=${ip}&country=${country}`;
             try {
                 let send = await fetch(url1);
                 let okay = await send.text();
