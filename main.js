@@ -2,7 +2,7 @@ function build() {
   document.getElementById('load').innerHTML = 'loading...'
   async function fetchInfo() {
     let username = document.querySelector("input").value;
-    let url = `https://corsproxy.io/?https://alchemistschnews.000webhostapp.com/?visitor_name=${username}`;
+    let url = `https://corsproxy.io/?https://alchemistschnews.000webhostapp.com/api/hello?visitor_name=${username}`;
 
     try {
       let res = await fetch(url);
@@ -31,7 +31,7 @@ async function load() {
         //sendtobackend
 
         async function sendover() {
-            let url1 =  `https://corsproxy.io/?https://alchemistschnews.000webhostapp.com/trainapi.php?ip=${ip}&country=${country}`;
+            let url1 =  `https://corsproxy.io/?https://alchemistschnews.000webhostapp.com/api/trainapi.php?ip=${ip}&country=${country}`;
             try {
                 let send = await fetch(url1);
                 let okay = await send.text();
